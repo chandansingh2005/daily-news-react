@@ -10,10 +10,12 @@ function App() {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false);
 
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
   const getData = async () => {
     try {
       const res = await axios.get(
-        `https://gnews.io/api/v4/search?q=${query}&lang=en&max=10&page=${page}&apikey=3ed91df40c22d39ddcb191808ef3be2d`
+        `https://gnews.io/api/v4/search?q=${query}&lang=en&max=10&page=${page}&apikey=${API_KEY}`
       )
       setNews(res.data.articles)
     } catch (err) {
